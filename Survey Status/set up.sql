@@ -1,0 +1,28 @@
+    CREATE TABLE `survey` (
+      `SURVEY_ID` int(11) NOT NULL AUTO_INCREMENT,
+      `END_DATE` datetime DEFAULT NULL,
+      `START_DATE` datetime DEFAULT NULL,
+      `STATUS` varchar(255) DEFAULT NULL,
+      `SURVEY_NAME` varchar(255) DEFAULT NULL,
+      PRIMARY KEY (`SURVEY_ID`)
+    )
+
+
+    CREATE TABLE `questions` (
+      `QUESTION_ID` int(11) NOT NULL AUTO_INCREMENT,
+      `QUESTION` varchar(255) DEFAULT NULL,
+      `SURVEY_ID` int(11) DEFAULT NULL,
+      PRIMARY KEY (`QUESTION_ID`),
+      KEY `FK95C5414DD76DB9F3` (`SURVEY_ID`),
+      CONSTRAINT `FK95C5414DD76DB9F3` FOREIGN KEY (`SURVEY_ID`) REFERENCES `survey` (`SURVEY_ID`)
+    )
+
+
+    CREATE TABLE `answer` (
+      `Answer_ID` int(11) NOT NULL AUTO_INCREMENT,
+      `Answer` varchar(255) DEFAULT NULL,
+      `Question_ID` int(11) DEFAULT NULL,
+      PRIMARY KEY (`Answer_ID`),
+      KEY `FKABCA3FBEE2FF2433` (`Question_ID`),
+      CONSTRAINT `FKABCA3FBEE2FF2433` FOREIGN KEY (`Question_ID`) REFERENCES `questions` (`QUESTION_ID`)
+    )
